@@ -1,0 +1,9 @@
+# Always revalidate the HTML so a new deploy never serves stale chunk references.
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Hashed build assets are immutable and can be cached aggressively.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
