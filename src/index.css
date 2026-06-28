@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+/* ----------------------------------------------------------------------------
+   FuturePilot AI — "Decision Console" design system
+   A career flight-simulator: calm lab canvas, deep-navy instrument console,
+   iris brand accent, and a semantic Go / Caution / Risk signal triad.
+---------------------------------------------------------------------------- */
+@theme {
+  --color-canvas: #f4f5f7;
+  --color-paper: #ffffff;
+  --color-ink: #0f1722;
+  --color-ink-soft: #5b6573;
+  --color-ink-faint: #8b94a3;
+  --color-line: #e6e8ec;
+  --color-line-strong: #d4d8df;
+
+  --color-console: #0e1a2b;
+  --color-console-soft: #16263b;
+  --color-console-line: #21354e;
+
+  --color-brand: #4b47ff;
+  --color-brand-strong: #3a36e0;
+  --color-brand-soft: #ecebff;
+  --color-brand-ink: #1f1c8a;
+
+  --color-go: #16b981;
+  --color-go-soft: #d6f5e9;
+  --color-caution: #f59e0b;
+  --color-caution-soft: #fcefd4;
+  --color-risk: #f0526a;
+  --color-risk-soft: #fcdfe4;
+  --color-data: #7c9cff;
+
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 34, 0.04), 0 8px 24px -12px rgba(15, 23, 34, 0.12);
+  --shadow-pop: 0 12px 40px -12px rgba(15, 23, 34, 0.28);
+  --shadow-console: 0 24px 60px -28px rgba(14, 26, 43, 0.55);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+  body {
+    margin: 0;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+    border: 3px solid var(--color-canvas);
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink-faint);
+  }
+}
+
+@layer components {
+  /* Mono "instrument label" — eyebrows, data tags, step codes */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+  }
+  /* Masks an input's text like a password field WITHOUT type=password, so the
+     browser's credential autofill (which can surface a saved email) never fires. */
+  .mask-input {
+    -webkit-text-security: disc;
+    text-security: disc;
+  }
+  /* Subtle blueprint grid for the console backdrop */
+  .blueprint {
+    background-image:
+      linear-gradient(rgba(124, 156, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 156, 255, 0.06) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
